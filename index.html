@@ -2,8 +2,25 @@
 <!-- saved from url=(0022)http://localhost:8888/ -->
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head>
 <body>
- <form action="/chat" method="post">
-    <textarea name="text" rows="20" cols="60"></textarea>
- <input type="submit" value="Submit text" />
+<script>
+	function sendMsg(){
+		var xhr = new XMLHttpRequest();
+
+		var body = document.getElementById("message").value;
+
+		xhr.open("POST", '/chat', true)
+		xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+		xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+
+		
+
+		xhr.send(body);
+		document.location.href += "chat"; 
+	}
+</script>
+ 
+    <textarea id="message" name="text" rows="20" cols="60"></textarea>
+    <button onclick="sendMsg()">Отправить</button>
+ 
 
 </body></html>
